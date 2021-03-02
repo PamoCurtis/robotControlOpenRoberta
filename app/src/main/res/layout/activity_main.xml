@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.MainActivity">
+
+    <Button
+        android:id="@+id/btnCam"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="#ABCACCCB"
+        android:onClick="startCamera"
+        android:text="Camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/msgVoltage"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:fontFamily="monospace"
+        android:inputType="textNoSuggestions"
+        android:paddingRight="5dp"
+        android:text="..."
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:typeface="monospace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCam" />
+
+    <TextView
+        android:id="@+id/msgORB0"
+        android:layout_width="78dp"
+        android:layout_height="80dp"
+        android:text="\n    Speed\n    Pos\n    Power"
+        app:layout_constraintEnd_toStartOf="@+id/msgORB1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msgVoltage" />
+
+    <TextView
+        android:id="@+id/msgORB1"
+        android:layout_width="173dp"
+        android:layout_height="80dp"
+        android:text="..."
+        app:layout_constraintEnd_toStartOf="@+id/msgORB2"
+        app:layout_constraintStart_toEndOf="@+id/msgORB0"
+        app:layout_constraintTop_toBottomOf="@+id/msgVoltage" />
+
+    <TextView
+        android:id="@+id/msgORB2"
+        android:layout_width="163dp"
+        android:layout_height="80dp"
+        android:text="..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/msgORB1"
+        app:layout_constraintTop_toBottomOf="@+id/msgVoltage" />
+
+    <SeekBar
+        android:id="@+id/seekBarSpeed"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="153dp"
+        android:layout_height="554dp"
+        android:max="2000"
+        android:progress="1000"
+        android:rotation="-90"
+        android:scaleX="2.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/seekBarSteering"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msgORB0" />
+
+    <SeekBar
+        android:id="@+id/seekBarSteering"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="253dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
+        android:indeterminate="false"
+        android:max="210"
+        android:progress="105"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBarSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/msgORB2"
+        app:layout_constraintVertical_bias="0.506" />
+
+    <Button
+        android:id="@+id/btnStop"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
+        android:layout_width="252dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="89dp"
+        android:background="#ABCACCCB"
+        android:onClick="onClick_Stop"
+        android:text="Stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBarSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarSteering" />
+
+</android.support.constraint.ConstraintLayout>
