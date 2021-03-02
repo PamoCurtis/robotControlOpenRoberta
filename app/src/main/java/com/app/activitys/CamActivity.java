@@ -162,7 +162,7 @@ public class CamActivity extends AppCompatActivity implements CameraBridgeViewBa
             } else {
                 rectangleColor = new Scalar(250, 30, 40);    // funktioniert nicht -> rot
                 if (35 < ++redCounter) {
-//                    drive(avgWidth/2, avgHeight/2);
+
                     // wenn das objekt auch nach 100 frames blinden Folgens nicht gefunden wurde,
                     // dreht ORB sich auf der Stelle in richtung der letzten sichtung
                     if (lastSeenAvgHeight > picHeight/2) {
@@ -197,8 +197,6 @@ public class CamActivity extends AppCompatActivity implements CameraBridgeViewBa
             speed *= 10;
         } else if (0 > speed) {
             speed = 0;
-//        } else if (400 < speed) {
-//            speed *= 3;
         } else {
             speed *= 3;
         }
