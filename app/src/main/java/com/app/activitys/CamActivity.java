@@ -129,7 +129,7 @@ public class CamActivity extends AppCompatActivity implements CameraBridgeViewBa
             Core.inRange(hsvImg, scalarLow, scalarHigh, mask);
 
 
-            //"schwerpunkt" der erkannten roten flächen berechnen
+            //"Schwerpunkt" der erkannten roten Flächen berechnen
             picHeight       = mask.rows();
             picWidth        = mask.width(); //mask.cols();
             int avgHeight   = 0;
@@ -153,7 +153,7 @@ public class CamActivity extends AppCompatActivity implements CameraBridgeViewBa
             lo.set( new double[]{ avgWidth - 30, avgHeight - 30 });
             ru.set( new double[]{ avgWidth + 30, avgHeight + 30 });
 
-            if (50 < count) {    // neue fahrtrichtung nur setzen, wenn nennenswerte menge an punkten gefunden wurde
+            if (50 < count) {    // neue Fahrtrichtung nur setzen, wenn nennenswerte Menge an Punkten gefunden wurde
                 drive(avgWidth, avgHeight);
                 rectangleColor = new Scalar(20, 200, 50);    // für overlay-quadrat: funktioniert -> gruen
                 redCounter = 0;
@@ -163,8 +163,8 @@ public class CamActivity extends AppCompatActivity implements CameraBridgeViewBa
                 rectangleColor = new Scalar(250, 30, 40);    // funktioniert nicht -> rot
                 if (35 < ++redCounter) {
 
-                    // wenn das objekt auch nach 100 frames blinden Folgens nicht gefunden wurde,
-                    // dreht ORB sich auf der Stelle in richtung der letzten sichtung
+                    // wenn das Objekt auch nach 100 Frames blinden folgens nicht gefunden wurde,
+                    // dreht ORB sich auf der Stelle in Richtung der letzten Sichtung
                     if (lastSeenAvgHeight > picHeight/2) {
                         mySeekBarSpeed.letItSpin(100);
                     } else {
@@ -173,11 +173,11 @@ public class CamActivity extends AppCompatActivity implements CameraBridgeViewBa
                 }
             }
 
-//            bitwise_not(mask, mask);                         // zum debuggen, um *nicht* erkannte bereiche zu sehen
-            bitwise_and(mRGBA, mRGBA, hsvImg, mask);           // farbbild auf filter legen
-//            cvtColor(hsvImg, hsvImg, COLOR_RGB2BGR);         // zum debuggen, da die erkennung auf falschfarben (rgb <-> bgr) läuft
+//            bitwise_not(mask, mask);                         // zum Debuggen, um *nicht* erkannte Bereiche zu sehen
+            bitwise_and(mRGBA, mRGBA, hsvImg, mask);           // Farbbild auf Filter legen
+//            cvtColor(hsvImg, hsvImg, COLOR_RGB2BGR);         // zum Debuggen, da die Erkennung auf Falschfarben (rgb <-> bgr) läuft
 
-            rectangle(hsvImg, lo, ru, rectangleColor, 3);       // quadrat über das erzeugte bild legen
+            rectangle(hsvImg, lo, ru, rectangleColor, 3);       // Quadrat über das erzeugte Bild legen
         }
         togglePic = !togglePic;
         return hsvImg;
@@ -189,9 +189,9 @@ public class CamActivity extends AppCompatActivity implements CameraBridgeViewBa
     }
 
     private void drive(int avgWidht, int avgHeight){
-        int steer = (int)( avgHeight * 200.0  / picHeight      -100 );     // -100 um bei 0 grade aus zu fahren -> zwischen -100 und 100
+        int steer = (int)( avgHeight * 200.0  / picHeight      -100 );     // -100 um bei 0 gerade aus zu fahren -> zwischen -100 und 100
         int speed = (int)( avgWidht  * 1000.0 / picWidth *(-1) +850 );     // -> zwischen -150 und 750
-        // muss auf den kopf gestellt werden, da beim bild (0,0) links oben ist aber links unten benoetigt wird
+        // muss auf den Kopf gestellt werden, da beim Bild (0,0) links oben ist aber links unten benoetigt wird
 
         if (-50 > speed) {
             speed *= 10;
